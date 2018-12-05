@@ -8,41 +8,46 @@ Discussify's browser extension.
 
 Choose one of the installations below. Note that you will need to have a self-sovereign identity on [uPort](https://www.uport.me/) to sign in into the app.
 
-### Pre-alpha
+### Easy install (AMO/Add-ons for Firefox and Chrome Web Store)
 
-Because the current version is a pre-alpha, it's not yet available through the regular Chrome Web store. Follow these steps to install the extension locally:
+TODO: add links once available
 
-1. Download the ZIP file from https://ipfs.io/ipfs/QmUy13FyGqfsmxy7dwiHLtkMYwLaJf2XBfWBkdn6pxM8bn
+### Build from source
 
-1. Extract the ZIP file to a folder
+**Warning:** It is recommended that you install from AMO or the Chrome Web Store, since that will give you automatic updates. Building from source, your extension will not update, and you will have to rebuild every time a new version comes out.
 
-1. Go to `chrome://extensions` in Chrome, enable "Developer Mode" and click "Load Unpacked"
+1. Clone the project.
 
-1. Point to the folder where you extracted the ZIP contents
+1. (optionally) Checkout a specific [version tag](./CHANGELOG.md). By default, `master` is checked out.
 
-The extension should now appear in the extensions list!
+1. Install the dependencies by running `npm install` in the project folder.
 
-### Development
+1. Build the project by running `npm run build` in the project folder.
 
-Follow these step to install the extension locally for development:
+1. On Chrome:
+    1. Type `chrome://extensions` in the URL bar.
+    1. Enable "_Developer mode_".
+    1. Click on "_Load unpacked extension..._" button.
+    1. Point to `dist/chrome`.
 
-1. Clone the project
+1. On Firefox:
 
-1. Install the dependencies by running `npm install` in the project folder
+    1. Type `about:debugging` in the URL bar.
+    1. Click on "_Enable add-on debugging_".
+    1. Click on "_Load Temporary Add-on_".
+    1. Pick the file `dist/firefox/manifest.json`.
 
-1. Start the development process by running `npm start` in the project folder
+## Contributing
 
-1. Go to `chrome://extensions` in Chrome, enable "Developer Mode" and click "Load Unpacked"
+If you want to contribute for the project, we encourage you to read over the [pm-discussify](https://github.com/ipfs-shipyard/pm-discussify) repository README.
 
-1. Install the extension manually in Chrome/Firefox
+In order to run the project, follow the [Build from source](#build-from-source) instructions but, instead of `npm run build`, use `npm start`.
 
-1. Point to the `dist` folder of the project folder
+The extension should now appear in the extensions list! Any changes to the source code will be compiled and the extension should automatically reload, thanks to [webpack-chrome-extension-reloader](https://github.com/rubenspgcavalcante/webpack-chrome-extension-reloader). If you have any problems with this feature, simply click the reload button on the extension.
 
-The extension should now appear in the extensions list! Any changes to the source code will be compiled and the extension should automatically reload, thanks to [webpack-chrome-extension-reloader]( https://github.com/rubenspgcavalcante/webpack-chrome-extension-reloader). If you have any problems with this feature, simply click the reload button on the extension.
+### Commands
 
-## Commands
-
-### start
+#### start
 
 ```sh
 $ npm start
@@ -50,11 +55,7 @@ $ npm start
 
 Starts the project for development.
 
-If this is your first time running the project, please go to `chrome://extensions` in Chrome. Click the "Load Unpacked" button and point to the `dist/` folder of this project. The extension should now appear in the extensions list!
-
-Any changes to the source code will be compiled and the extension should automatically reload, thanks to [webpack-chrome-extension-reloader]( https://github.com/rubenspgcavalcante/webpack-chrome-extension-reloader). If you have any problems with this feature, simply click the reload button on the extension.
-
-### build
+#### build
 
 ```sh
 $ npm run build
@@ -62,7 +63,7 @@ $ npm run build
 
 Builds the project for production.
 
-### test
+#### test
 
 ```sh
 $ npm test
@@ -77,7 +78,3 @@ $ npm run lint
 ```
 
 Checks if the project has any linting errors.
-
-## Contributing
-
-If you want to contribute for the project, we encourage you to read over the [pm-discussify](https://github.com/ipfs-shipyard/pm-discussify) repository README.
