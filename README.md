@@ -49,11 +49,25 @@ The extension should now appear in the extensions list! Any changes to the sourc
 
 #### start
 
+You can start your project for development in 3 different ways:
+
+```sh
+$ npm run start:chrome
+```
+```sh
+$ npm run start:firefox
+```
 ```sh
 $ npm start
 ```
 
-Starts the project for development.
+All the commands listed above start the project for development. Note the differences:
+
+- `$ npm run start:chrome` will produce a development build on `dist/chrome/build`. You should point to `dist/chrome` on `chrome://extensions/`.
+
+- `$ npm run start:firefox` will also produce a development build but this time on `dist/firefox/build`. You should pick the `dist/firefox/manifest.json` file when you are click on "_Load Temporary Add-on_".
+
+- `$ npm start` runs `npm run start:chrome` by default.
 
 #### build
 
@@ -71,7 +85,7 @@ $ npm test
 
 Runs the project tests.
 
-### lint
+#### lint
 
 ```sh
 $ npm run lint
